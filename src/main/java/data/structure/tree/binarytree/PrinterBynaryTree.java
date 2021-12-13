@@ -1,10 +1,9 @@
-package data.structure.binarytree;
+package data.structure.tree.binarytree;
 
 import java.util.Optional;
 
+import data.structure.tree.Printable;
 import org.apache.commons.lang3.StringUtils;
-
-import data.structure.Printable;
 
 /**
  * 
@@ -19,7 +18,7 @@ import data.structure.Printable;
  *       1   3?
  *
  */
-public class PrinterBynaryTree implements Printable<Optional<Node>>{
+public class PrinterBynaryTree implements Printable<Optional<Node>> {
 
 	@Override
 	public void print(Optional<Node> node, Order order) {

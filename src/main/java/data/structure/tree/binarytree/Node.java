@@ -1,4 +1,4 @@
-package data.structure.binarytree;
+package data.structure.tree.binarytree;
 
 import java.util.Optional;
 

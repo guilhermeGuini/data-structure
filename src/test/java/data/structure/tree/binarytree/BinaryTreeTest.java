@@ -1,7 +1,9 @@
-package data.structure.binarytree;
+package data.structure.tree.binarytree;
 
 import static org.junit.Assert.assertEquals;
 
+import data.structure.tree.binarytree.BinaryTree;
+import data.structure.tree.binarytree.Node;
 import org.junit.Test;
 
 public class BinaryTreeTest {
