@@ -1,4 +1,4 @@
-package data.structure.tree.binarytree;
+package data.structure.tree;
 
 public enum Order {
 

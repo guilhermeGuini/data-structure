@@ -1,7 +1,6 @@
 package data.structure.tree.binarytree;
 
-import java.util.Optional;
-
+import data.structure.tree.Order;
 import data.structure.tree.Printable;
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,10 +17,10 @@ import org.apache.commons.lang3.StringUtils;
  *       1   3?
  *
  */
-public class PrinterBynaryTree implements Printable<Optional<Node>> {
+public class PrinterBynaryTree implements Printable<BinaryTreeNode> {
 
 	@Override
-	public void print(Optional<Node> node, Order order) {
+	public void print(BinaryTreeNode node, Order order) {
 		
 		System.out.println("#####################################");
 		System.out.println("#     BINARY TREE "  + order);
@@ -47,41 +46,41 @@ public class PrinterBynaryTree implements Printable<Optional<Node>> {
 		System.out.println();
 	}
 
-	private void printCool(Optional<Node> node, Integer spaces) {
-		if (!node.isPresent()) {
+	private void printCool(BinaryTreeNode node, Integer spaces) {
+		if (node == null) {
 			return;
 		}
 		
-		System.out.println(StringUtils.repeat(' ', spaces) + node.get().getValue());
+		System.out.println(StringUtils.repeat(' ', spaces) + node.getValue());
 		
-		if (node.get().getChildLeft().isPresent()) {
+		if (node.getChildLeft().isPresent()) {
 			System.out.println(StringUtils.repeat(' ', spaces - 1) + "/");
 		}
 		
-		printCool(node.get().getChildLeft(), spaces - 2);
-		printCool(node.get().getChildRight(), spaces + 2);
+		printCool(node.getChildLeft().orElse(null), spaces - 2);
+		printCool(node.getChildRight().orElse(null), spaces + 2);
 	}
 
-	private void printAsc(Optional<Node> node) {
+	private void printAsc(BinaryTreeNode node) {
 		
-		if (!node.isPresent()) {
+		if (node == null) {
 			return;
 		}
 		
-		printAsc(node.get().getChildLeft());
-		System.out.println(node.get().getValue());
-		printAsc(node.get().getChildRight());
+		printAsc(node.getChildLeft().orElse(null));
+		System.out.println(node.getValue());
+		printAsc(node.getChildRight().orElse(null));
 	}
 
-	private void printDesc(Optional<Node> node) {
+	private void printDesc(BinaryTreeNode node) {
 
-		if (!node.isPresent()) {
+		if (node == null) {
 			return;
 		}
 		
-		printDesc(node.get().getChildRight());
-		System.out.println(node.get().getValue());
-		printDesc(node.get().getChildLeft());
+		printDesc(node.getChildRight().orElse(null));
+		System.out.println(node.getValue());
+		printDesc(node.getChildLeft().orElse(null));
 	}
 
 }

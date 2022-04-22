@@ -1,14 +1,15 @@
 package data.structure.tree.binarytree;
 
-import java.util.Optional;
+import data.structure.tree.Node;
+import data.structure.tree.Order;
 
 public class BinaryTree {
 
-	Optional<Node> root;
+	private final Node root;
 	
 	private BinaryTree(Integer value) {
 		valid(value);
-		root = Node.createRoot(value);
+		root = BinaryTreeNode.create(value);
 	}
 	
 	public static BinaryTree create(Integer value) {
@@ -17,14 +18,14 @@ public class BinaryTree {
 	
 	public BinaryTree add(Integer value) {
 		valid(value);
-		
+
 		Node parentNode = findParentNode(root, value);
 		
 		if (value > parentNode.getValue()) {
-			parentNode.setChildRight(Node.create(value));
+			parentNode.setChildRight(BinaryTreeNode.create(value));
 			
 		} else {
-			parentNode.setChildLeft(Node.create(value));
+			parentNode.setChildLeft(BinaryTreeNode.create(value));
 		}
 		
 		return this;
@@ -35,23 +36,23 @@ public class BinaryTree {
 			throw new IllegalArgumentException("Value is required");
 		}
 	}
-	
-	Node findParentNode(Optional<Node> node, Integer value) {
+
+	Node findParentNode(Node node, Integer value) {
 		
-		if (isTargetNode(value, node.get())) {
-			return node.get();
+		if (isTargetNode(value, node)) {
+			return node;
 		}	
 		
-		if (value < node.get().getValue()) {
-			return findParentNode(node.get().getChildLeft(), value);
+		if (value < node.getValue()) {
+			return findParentNode(node.getChildLeft().orElse(null), value);
 		} else {
-			return findParentNode(node.get().getChildRight(), value);
+			return findParentNode(node.getChildRight().orElse(null), value);
 		}
 	}
 
-	private boolean isTargetNode(Integer value, Node node) {
-		return (value < node.getValue() && !node.getChildLeft().isPresent()) ||
-			   (value > node.getValue() && !node.getChildRight().isPresent());
+	private boolean isTargetNode(Integer value, BinaryTreeNode node) {
+		return (value < node.getValue() && node.getChildLeft().isEmpty()) ||
+			   (value > node.getValue() && node.getChildRight().isEmpty());
 	}
 
 	public void showAsc() {
@@ -69,5 +70,8 @@ public class BinaryTree {
 	private void show(Order order) {
 		new PrinterBynaryTree().print(root, order);
 	}
-	
+
+	public BinaryTreeNode getRoot() {
+		return root;
+	}
 }

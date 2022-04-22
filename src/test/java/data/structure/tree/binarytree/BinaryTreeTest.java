@@ -1,10 +1,8 @@
 package data.structure.tree.binarytree;
 
-import static org.junit.Assert.assertEquals;
-
-import data.structure.tree.binarytree.BinaryTree;
-import data.structure.tree.binarytree.Node;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class BinaryTreeTest {
 	
@@ -23,7 +21,7 @@ public class BinaryTreeTest {
 	public void givenTreeWhenFindParentNodeForValueShouldFoundTargetNode() {
 		BinaryTree tree = createTree();
 		
-		Node targetNode = tree.findParentNode(tree.root, 3);
+		BinaryTreeNode targetNode = tree.findParentNode(tree.getRoot(), 3);
 		assertEquals(2, targetNode.getValue().intValue());
 	}
 	
