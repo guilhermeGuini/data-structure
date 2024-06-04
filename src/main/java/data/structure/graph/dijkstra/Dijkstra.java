@@ -35,12 +35,9 @@ public class Dijkstra {
                 if (!distances.containsKey(vertex.getId()) || distance < distances.get(vertex.getId())) {
                     distances.put(vertex.getId(), distance);
                     path.put(vertex.getId(), smallest);
-                    nodes.remove(vertex);
                     nodes.add(Vertex.of(vertex.getId(), distance));
                 }
             }
-
-            nodes.remove(smallest);
         }
 
         this.path = path;

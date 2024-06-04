@@ -11,7 +11,7 @@ public class DijkstraAlgorithmTest {
         Graph graph = createGraph();
 
         var dijkstra = new Dijkstra();
-        dijkstra.getShortestPath(graph, "A", "D");
+        dijkstra.getShortestPath(graph, "A", "H");
 
         Print.print(dijkstra);
     }
