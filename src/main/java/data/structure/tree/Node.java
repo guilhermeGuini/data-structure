@@ -2,29 +2,42 @@ package data.structure.tree;
 
 import java.util.Optional;
 
-public abstract class Node {
+public class Node {
 
     protected Node root;
+    protected Node left;
+    protected Node right;
+    protected Integer value;
+
+    public Node(Integer value) {
+        this.value = value;
+    }
+
+    public static Node create(Integer value) {
+        return new Node(value);
+    }
+
+    public void setRoot(Node node) {
+        this.root = node;
+    }
 
     public void setChildRight(Node node) {
-        root.setChildRight(node);
+        this.right = node;
     }
 
     public void setChildLeft(Node node) {
-        root.setChildLeft(node);
+        this.left = node;
     }
 
     public Optional<Node> getChildRight() {
-        return Optional.ofNullable(node.get)
+        return Optional.ofNullable(right);
     }
 
-    @Override
     public Optional<Node> getChildLeft() {
-            return Optional.empty();
-            }
+        return Optional.ofNullable(left);
+    }
 
-    @Override
     public Integer getValue() {
-            return null;
-            }
+        return value;
+    }
 }
